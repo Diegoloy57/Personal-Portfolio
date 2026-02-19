@@ -18,7 +18,7 @@ $portfolio = [
     "github"    => "https://github.com/Diegoloy57",
 
     // --- BIO ---
-    "bio" => "Soy estudiante de Ingeniería Informática con interés en el desarrollo de software y la arquitectura de sistemas. Me motiva entender cómo funcionan las cosas desde la base y construir soluciones eficientes, escalables y bien estructuradas. Actualmente enfocado en seguir fortaleciendo mis fundamentos técnicos y participando en proyectos que me reten a crecer.",
+    "bio" => "Estudiante de Ingeniería Informática en octavo semestre, con interés en el desarrollo de software y la arquitectura de sistemas. Cuento con conocimientos en desarrollo web y conocimientos de inglés, lo que me permite acceder a documentación técnica y diferentes entornos. Me motiva comprender los sistemas desde sus fundamentos y construir soluciones eficientes, escalables y bien estructuradas. Actualmente enfocado en fortalecer mis bases técnicas y participar en proyectos que representen nuevos desafíos.",
 
     // --- HABILIDADES ---
     // Array de arrays: cada habilidad es un array con sus propios datos
