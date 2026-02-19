@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         width: 300px;
         height: 300px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(108,99,255,0.25) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(108,99,255,0.06) 0%, transparent 70%);
         pointer-events: none;
         transform: translate(-50%, -50%);
         z-index: 0;
@@ -182,4 +182,131 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+});
+
+    // --------------------------------------------------------
+    // 8. MODAL DE CERTIFICADOS
+    // --------------------------------------------------------
+    // Concepto: Event Delegation + manipulación del DOM
+    //
+    // En lugar de poner un listener en CADA tarjeta,
+    // ponemos UNO SOLO en el contenedor padre y detectamos
+    // qué hijo fue clicado con closest(). Más eficiente.
+    // --------------------------------------------------------
+
+    const modal          = document.getElementById('cert-modal');
+    const modalImg       = document.getElementById('modal-img');
+    const modalNombre    = document.getElementById('modal-nombre');
+    const modalInst      = document.getElementById('modal-institucion');
+    const modalCerrar    = document.getElementById('modal-cerrar');
+
+    // Función para ABRIR el modal
+    function abrirModal(card) {
+        // Leemos los atributos data-* que PHP puso en cada tarjeta
+        // Aquí ves la conexión PHP → HTML → JS en acción
+        const imagen      = card.dataset.imagen;
+        const nombre      = card.dataset.nombre;
+        const institucion = card.dataset.institucion;
+
+        // Actualizamos el contenido del modal con los datos de esa tarjeta
+        modalImg.src              = imagen;
+        modalImg.alt              = nombre;
+        modalNombre.textContent   = nombre;
+        modalInst.textContent     = institucion;
+
+        // Mostramos el modal añadiendo la clase .activo
+        // CSS se encarga de la animación de entrada
+        modal.classList.add('activo');
+
+        // Bloqueamos el scroll del body mientras el modal está abierto
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Función para CERRAR el modal
+    function cerrarModal() {
+        modal.classList.remove('activo');
+        document.body.style.overflow = ''; // Restauramos el scroll
+    }
+
+    // Escuchamos clics en todas las tarjetas de certificados
+    document.querySelectorAll('.cert-card').forEach(card => {
+        card.addEventListener('click', () => abrirModal(card));
+    });
+
+    // Cerrar con el botón ✕
+    if (modalCerrar) {
+        modalCerrar.addEventListener('click', cerrarModal);
+    }
+
+    // Cerrar haciendo clic FUERA del contenido (en el overlay oscuro)
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            // e.target = el elemento exacto que fue clicado
+            // Si clicaron el overlay (no el contenido), cerramos
+            if (e.target === modal) cerrarModal();
+        });
+    }
+
+    // Cerrar con la tecla Escape (buena práctica de accesibilidad)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('activo')) {
+            cerrarModal();
+        }
+    });
+
+// ============================================================
+// MODAL DE CERTIFICADOS
+// CONCEPTO: Manipulación del DOM — JS modifica el HTML en tiempo
+// real sin recargar la página. Leemos datos del array que PHP
+// generó (certificadosData) y los "inyectamos" en el modal.
+// ============================================================
+
+function abrirModal(index) {
+    // 1. Obtenemos los datos del certificado usando el índice
+    const cert = certificadosData[index];
+
+    // 2. Seleccionamos los elementos del modal en el DOM
+    const modal     = document.getElementById('certModal');
+    const imagen    = document.getElementById('modalImagen');
+    const nombre    = document.getElementById('modalNombre');
+    const institucion = document.getElementById('modalInstitucion');
+    const fecha     = document.getElementById('modalFecha');
+    const duracion  = document.getElementById('modalDuracion');
+
+    // 3. Rellenamos el modal con los datos del certificado
+    imagen.src         = `/portafolio/img/certificados/${cert.imagen}`;
+    imagen.alt         = cert.nombre;
+    nombre.textContent = cert.nombre;
+    institucion.textContent = cert.institucion;
+    fecha.textContent  = '📅 ' + cert.fecha;
+    duracion.textContent = '⏱ ' + cert.duracion;
+
+    // 4. Mostramos el modal añadiendo la clase .activo
+    modal.classList.add('activo');
+
+    // 5. Bloqueamos el scroll del body mientras el modal está abierto
+    document.body.style.overflow = 'hidden';
+}
+
+function cerrarModal(event) {
+    // Si se pasó un evento (clic en el overlay), solo cerramos
+    // si el clic fue DIRECTAMENTE en el overlay, no en el contenido
+    if (event && event.target !== document.getElementById('certModal')) return;
+
+    const modal = document.getElementById('certModal');
+    modal.classList.remove('activo');
+
+    // Restauramos el scroll del body
+    document.body.style.overflow = '';
+}
+
+// Cerrar modal con la tecla Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('certModal');
+        if (modal.classList.contains('activo')) {
+            modal.classList.remove('activo');
+            document.body.style.overflow = '';
+        }
+    }
 });
