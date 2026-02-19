@@ -16,6 +16,7 @@ $portfolio = [
         ["nombre" => "Git & GitHub",    "nivel" => 80, "icono" => "🔧"],
         ["nombre" => "SQL",             "nivel" => 55, "icono" => "🗄️"],
         ["nombre" => "Android Studio",  "nivel" => 40, "icono" => "📱"],
+        ["nombre" => "Python", "nivel" => 75, "icono" => "🐍"],
     ],
 
     // --- CERTIFICADOS ---
