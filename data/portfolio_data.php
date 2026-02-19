@@ -23,10 +23,10 @@ $portfolio = [
     // --- HABILIDADES ---
     // Array de arrays: cada habilidad es un array con sus propios datos
     "habilidades" => [
-        ["nombre" => "HTML & CSS",      "nivel" => 85, "icono" => "🎨"],
+        ["nombre" => "HTML & CSS",      "nivel" => 95, "icono" => "🎨"],
         ["nombre" => "JavaScript",      "nivel" => 75, "icono" => "⚡"],
         ["nombre" => "React",           "nivel" => 70, "icono" => "⚛️"],
-        ["nombre" => "Git & GitHub",    "nivel" => 80, "icono" => "🔧"],
+        ["nombre" => "Git & GitHub",    "nivel" => 100, "icono" => "🔧"],
         ["nombre" => "SQL",             "nivel" => 55, "icono" => "🗄️"],
         ["nombre" => "Android Studio",  "nivel" => 40, "icono" => "📱"],
     ],

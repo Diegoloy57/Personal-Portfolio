@@ -57,7 +57,7 @@
                     </div>
                     <div class="chip">
                         <span class="chip-icon">📍</span>
-                        <span>Venezuela</span>
+                        <span>Envigado, Antioquia</span>
                     </div>
                     <div class="chip">
                         <span class="chip-icon">💡</span>
