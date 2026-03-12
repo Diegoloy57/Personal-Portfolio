@@ -274,7 +274,7 @@ function abrirModal(index) {
     const duracion  = document.getElementById('modalDuracion');
 
     // 3. Rellenamos el modal con los datos del certificado
-    imagen.src         = `/portafolio/img/certificados/${cert.imagen}`;
+    imagen.src         = `img/certificados/${cert.imagen}`;
     imagen.alt         = cert.nombre;
     nombre.textContent = cert.nombre;
     institucion.textContent = cert.institucion;
