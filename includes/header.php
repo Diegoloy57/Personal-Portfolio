@@ -26,6 +26,6 @@ require_once __DIR__ . '/../data/portfolio_data.php';
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
     <!-- Nuestro CSS principal -->
-    <link rel="stylesheet" href="/portafolio/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

@@ -8,6 +8,6 @@
 ?>
 
     <!-- Script principal: se carga cuando todo el HTML ya existe -->
-    <script src="/portafolio/js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
